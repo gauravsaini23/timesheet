@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+gaurav1:
+  username: rohit
+  salt: <%= SALT = "NaCl" unless defined?(SALT) %>
+  hashed_password: <%= User.encrypted_password("admin1" , SALT) %>
+  forgot_password_hash: "askjd654d4l324k321a321s3j132d13k1jkj"
+
+  
+gaurav:
+  username: gaurav
+  salt: <%= SALT = "NaCl" unless defined?(SALT) %>
+  hashed_password: <%= User.encrypted_password('password1' , SALT) %>

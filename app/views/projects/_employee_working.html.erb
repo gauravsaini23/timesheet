@@ -1,0 +1,11 @@
+<div id = "employee_working<%="#{@project.id}"%>">   
+   <% @project.employees.each do |emp| %>
+     <%= emp.first_name + emp.last_name -%>
+     <%= link_to_remote("Deallocate ",:url => {:controller => "projects",
+                                               :action =>"ajax_in_list",
+                                               :pid => @project.id, 
+                                               :eid => emp.id },
+                                       :update =>"employee_working#{@project.id}"
+                                       )%><br/>
+    <%end%>
+</div>

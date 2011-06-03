@@ -1,0 +1,43 @@
+<head>
+<title>Create timesheet</title>
+</head>
+<table>
+
+    <% form_for :timesheet, :url => {:action => "create", :controller => "timesheets" } do |f| %>
+  <tr>      
+    <td><label for="date">Date:</label></td>
+    <td>  <%= select_date(Date.current) %></td>
+  </tr>    
+  <%= observe_field(:date_year,
+    :url => { :action => :update_projects },
+    :frequency => 0.5,
+    :update => :project_box,
+    :with => "'year='+encodeURIComponent(value)"
+
+    )
+    
+  %>
+
+
+  <tr>
+    <td><label for=”project_name”>Project Name:</label></td>
+    <td>
+      <div id = "project_box">  
+        <%= render(:partial => "project_list", :locals => {:projects => @projects})%></td>
+      </div>
+  </tr>
+  
+
+  <tr>
+    <td> <label for=”description”>Description:</label></td>
+    <td>  <%= f.text_area "description", :rows => 6 %></td>
+  </tr>
+  <tr>
+    <td><label for=”duration”>Duration:</label></td>
+    <td><%= f.time_select :start ,:prompt => true%></td>
+  </tr>
+  <tr>
+      <td></td>
+      <td><%= f.submit "Create" %></td>
+  </tr>
+    <% end %>

@@ -1,0 +1,12 @@
+Dear <%= @emp.first_name + "  " + @emp.last_name %>
+
+Your account has been Edited successfully by the administrator
+Now Your name is <%= @emp.first_name + "  " + @emp.last_name%>
+and your email address is <%= @emp.email %>
+For security reasons you should change your password using the following link ( you cannot access your account until you change password)     
+<br/>
+
+<%= "http://localhost:3000/users/forgot_password/" + @user.confirm_creation_hash %>
+
+Thanks
+

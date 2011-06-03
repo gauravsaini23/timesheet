@@ -1,0 +1,31 @@
+  <div id = "top_right_box">
+  <%= link_to "Create Project", :action => "create", :controller => "projects"%><br/><br/>
+  <%= link_to "Home", :action => "home" , :controller => "users"%>
+  </div>
+  <% if @projects %>
+  <div id = "list">
+  <table border =1>
+    <th>Project Name</th>
+    <th>Employees working on it </th>
+    <th>Actions for project</th>
+    <% @projects.each do |@project|%>
+      <tr>
+        <td><%= @project.name -%> </td>
+     
+      <td><%= render(:partial => "employee_working", :locals => {:project => @project} ) %></td>
+     
+        </td>    
+        <td>
+          <%= link_to "Edit project details",{:id => @project.id, :action => "edit", :controller => "projects"} %>
+          <% if @project.deactivated_at %>
+          <br/>  Project is deactivated
+          <% end %>
+        </td>
+      </tr>
+    
+  <% end %>  
+  </table> 
+  <% end %>
+
+  </div>
+

@@ -1,0 +1,98 @@
+
+  #banner_img {
+    width: "100%";
+    border: 2px #FFE4C4;
+    float:absolute;
+  }
+  #columns {
+    background: # ;
+  }
+  #main {
+    float:absolute;
+    padding-top: 2ex;
+    background:	#C3FDB8;
+    border: 1px solid green;
+  }
+
+  #list {
+    float: ;
+
+   
+  }
+  #top_right_box {
+    border: 2px solid;
+    padding-right: 14px;
+    height: 100px;
+    padding-left: 14px;
+    padding-top: 14px;
+    float: right;
+    float:top;
+
+
+  }
+
+  #project_list {
+    border: 1px solid;
+    float:left;
+  }
+  #employee_list {
+    border: 1px solid;
+    float:left;
+  }
+
+  #msg_box {
+    border: 0px;
+    float: absolute;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #E0F8EC ;
+    font: bold smaller sans-serif;
+  }
+  #login_box {
+  float: right;
+  background-color:#F0F8FF;
+  padding-left: 50px;
+  width: 280px;
+  height: 200px;
+  text-align: right;
+  }
+  #sidebar {
+  float: right;
+  padding-left: 14px;
+  border-left: 1px solid;
+  padding-top: 4px;
+  border-top: 1px solid;
+  background-color:#E0F8EC;
+  padding-right:20px;
+  width:200px;
+  height:600px;
+  }
+  #top_right_links {
+    border-bottom: 2px solid;
+    border-right: 2px solid;  
+    border-top: 2px solid;  
+    float: right;
+    float:top;
+    color: white;
+    background: #FFE4C4 ;
+  }
+  #date_of_leaving{ 
+    float: right;
+    color: black;
+    border: 1px solid red;
+    background: #F8E0EC;
+  }
+  #edit_form{ 
+    float: left;
+    color: black;
+    background: #D8D8D8;
+    border: 1px solid green;
+  }
+  #timesheet_date{
+    width:230px;
+    border: 2px solid;  
+  }
+  #timesheet{
+    background: #CEF6E3;
+   
+  }

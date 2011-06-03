@@ -1,0 +1,23 @@
+<div id = "project_list">
+<table>
+<% Project.all.each do |p|%>
+  <tr>
+    <td><%=  if @emp.projects.find_by_id(p.id)
+              " (A)"
+            else
+              " (NA)"
+            end %></td>
+   <td><%= link_to_remote( p.name, :url => {:controller => "employees",
+                                       :action =>"ajax_action",
+                                       :pid => p.id, 
+                                       :eid => @emp.id },
+                      :update =>"project_list" 
+                    )%></td>
+   </tr>
+<%end%>
+</table>
+</div>
+
+  
+
+      

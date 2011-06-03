@@ -1,0 +1,53 @@
+  <%= error_messages_for :emp %>
+  <div id = "edit_form">
+  <% form_for :employee,@emp, :url =>{:id => nil,:action=>"edit", :controller => "employees"} do |f| %>
+    <%= f.hidden_field :e_id, :value => @emp.id %>
+    <%= render(:partial => "employee_form", :locals => {:projects => @projects,:f =>f, :emp => @emp})%>
+
+  <table>
+<% if @emp.date_of_leaving.nil?%>
+    <tr >
+      <td><label for="projects">Select projects</label></td>      
+      <td >
+        <%= render (:partial => "project_list", :locals => {:projects => @projects,:emp => @emp})%>
+      </td>
+    </tr>
+    <tr>  
+      <td></td>
+      <td><h6>*'A' means project is allocated <br/>and 'NA' for not allocated to Employee <br/> chnges are immediate</h6></td>
+    </tr>
+
+<% end %>
+    <tr>
+      <td> &nbsp;</td>
+      <td><%= f.submit "Save "%></td>
+    </tr>
+  </table>
+
+  <% end %>
+  </div>
+  <div id = "date_of_leaving"> 
+    <% if @emp.date_of_leaving.nil? %>
+       <h6>If employee has left, update his date of leaving</h6>
+    <table> 
+      <% form_for "dol", :url =>{ :action => "update_leaving_date", :controller => "employees"} do |f| %>
+      <tr>
+        <td><%= f.hidden_field :id,:value => @emp.id%></td>
+      </tr>
+      <tr>
+        <td><label for="date_of_leaving_date">Date of leaving:</label></td>
+        <td><%= date_select "date_of_leaving","date",:start_year => 2010 ,:prompt => {:day=>'Select day',
+                                                                                       :month=>'Select month',
+                                                                                       :year=>'Select year'} %></td>
+      </tr>  
+      <tr>
+        <td><%= f.submit "Save"%></td>
+      </tr>  
+    <% end %>          
+    </table>
+
+    <% else %>
+      Employee has left the company on <%=@emp.date_of_leaving %>
+
+    <% end %>
+  </div>  

@@ -1,0 +1,28 @@
+<!-- this page has to show two views one for employee and one for admin !-->
+
+
+<table border = 1 width="100%" >
+  <th>From:</th>
+  <th>To:</th>
+  <th>Project</th>
+<% if @user.is_admin %>
+  <th>Employee </th>
+<% end %>
+  <% form_for :timesheet_of, :url =>{:id => nil, :action=>"view", :controller => "timesheets"} do |f| %>
+   <tr>
+     <td><%= f.date_select (:date_from,:start_year => 2010 ,:default => @date_from)%></td>
+     <td><%= f.date_select "date_to",:start_year => 2010 ,:default => @date_to %></td>
+     <td><%= f.select "project_id", options_for_select(Project.all.collect{|p| [p.name, p.id]}),{:prompt =>  "All"} %>
+    <% if @user.is_admin %>
+     <td><%= f.select "employee_id", options_for_select(Employee.all.collect{|e|[e.email,e.id]}),{:prompt => "All" }%>
+    <% end %>
+   </tr>
+   
+   <tr>  
+     <td colspan = "4" align = "center"><%= submit_tag "Show me"%>
+   </tr>  
+  <% end %>  
+</table>
+
+<%= render (:partial => "sheet",:locals => {:timesheets => @timesheets, :asc => ""}) %>
+

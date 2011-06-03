@@ -1,0 +1,22 @@
+Welcome <%= @user.username%>
+
+ 
+<div id = "sidebar">
+<% if @user.is_admin %>
+  
+  <%= link_to "Employee Management", :action => "list", :controller => "employees"%><br/><br/>
+  
+  <%= link_to "Projects Management", :action => "list", :controller => "projects"%><br/><br/>
+  
+  <%= link_to 'View Timesheet',{ :action => "view", :controller => "timesheets" } %><br/><br/>
+
+
+<% else %>
+  <%= link_to "Fill Timesheet ", :action => "create", :controller => "timesheets"%><br/><br/>
+  <%= link_to "My Timesheets",{ :action => "view", :controller => "timesheets" } %><br/><br/>
+  <%= link_to "Allocated Projects",{:id => @user.employee_id, :action => "projects_allocated_to_employee", :controller => "projects" }%><br/><br/>
+  
+<% end %>  
+  <%= link_to "logout", :action => "logout", :controller => "users"%><br/><br/>
+  <%= link_to "Change Password", :action => "change_password", :controller => "users"%><br/><br/>
+  </div>

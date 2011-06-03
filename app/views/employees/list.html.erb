@@ -1,0 +1,32 @@
+<% if @employees %>
+<ol>
+<div id = "top_right_box">
+  <%= link_to "Create Employee", :action => "create", :controller => "employees"%><br/><br/>
+  <%= link_to "Home", :action => "home" , :controller => "users"%>
+</div>  
+<div id = "list">
+<table border = 1>
+<th>Employee name</th>
+<th>Email address</th>
+<th>Actions</th>
+
+<% @employees.each do |employee|%>
+  <tr>  
+    <td><%= employee.first_name + "&nbsp;" + employee.last_name %></td>
+    <td><%= employee.email-%> </td>
+    <td><%= link_to 'Edit',{:id => employee.id, :action => "edit", :controller => "employees" }-%>    <br/>
+
+    <% unless employee.date_of_leaving.nil?%>
+<div id= "date_of_leaving">
+    Employee Left on <%= employee.date_of_leaving%>
+</div>
+    <%end%>
+
+  </tr>
+<% end %>  
+
+</table>
+<% end %>
+</div>
+
+

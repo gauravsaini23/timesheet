@@ -1,0 +1,17 @@
+  <% form_for :emp, :url =>{:action=>"create", :controller => "employees"} do |f| %>
+  <%= render (:partial => "employee_form" , :locals => {:f =>f })%>
+  <table>
+  <tr >
+    <td><label for="projects">Select projects</label></td>      
+    <td >
+      <%= select_tag ("projects[]", options_for_select(Project.all.collect {|p| [p.name] }), 
+                      { :size =>"5",:multiple => "multiple", :style =>"width:260px;height:100px;" })   %>
+  
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= f.submit "Save "%></td>
+  </tr>
+ <% end %>
+

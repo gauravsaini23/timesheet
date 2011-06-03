@@ -1,0 +1,22 @@
+<% if flash[:msg]%>
+
+<%end%>   
+
+    <% form_tag  :url => {:action => "login" } do %>
+
+<fieldset id = "login_box">
+<legend>Please login</legend>
+      <p><label for=”login_username”>Username:</label>
+      <%= text_field_tag :username, params[:username],:size => 18%></p>
+
+      <p><label for=”login_password”>Password:</label>
+      <%= password_field_tag :password, params[:password],:size => 18 %></p>
+    
+      <%= submit_tag "Login" %><br/><br/><br/>
+    <%  end %>
+    <%= link_to "forgot password", :action => "forgot_password"%>
+ </fieldset>   
+     
+
+   
+

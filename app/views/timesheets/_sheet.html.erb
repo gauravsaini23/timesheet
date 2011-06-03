@@ -1,0 +1,36 @@
+<div id = "sheet">
+<table border = 4 align="center" cellspacing = 4 width = "100%" >
+<% if @user.is_admin %>
+  <th><%= link_to_remote("Employee",:url => {:eorder => @eorder,:array => @timesheets,:id => "e", :action => "sort_it"},
+                                    :update => "sheet" ) %>
+      <%=  @eorder if @eorder%>
+  </th>
+<% end %>
+  <th> <%= link_to_remote("Project name",:url => {:porder => @porder,:array => @timesheets,:id => "p", :action => "sort_it"},
+                                         :update => "sheet" ) %>
+      <%=  @porder if @porder%>
+  </th>
+  <th>Description </th>
+  <th><%= link_to_remote("Duration <br/>hr:min",:url => {:duorder => @duorder,:array => @timesheets,:id => "du", :action => "sort_it"},
+                                    :update => "sheet" )%>
+      <%=  @duorder %>
+  </th>
+  <th><%= link_to_remote("Date ",:url => {:dorder => @dorder,:array => @timesheets,:id => "d", :action => "sort_it"},
+                                    :update => "sheet" ) %>
+      <%=  @dorder %>
+  </th>
+  
+<% @timesheets.each do |p|%>
+    
+    <tr>
+    <% if @user.is_admin %>
+      <td>&nbsp; <%= p.employee_name  %>    </td>
+    <% end %>
+      <td>&nbsp; <%= p.project_name %> </td>
+      <td>&nbsp; <%= p.description %></td>
+      <td> <%= p.duration.strftime("%H :%M ") %></td> 
+      <td>&nbsp; <%= p.date %></td> 
+    </tr>
+<% end %>  
+</table>
+</div>

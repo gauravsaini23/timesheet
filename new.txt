@@ -1,0 +1,25 @@
+Timesheet is a web application developed for simple management of employees .
+It takes account of :
+
+=> Admin user , who has the rights of
+    -creating employees
+    -Editing existing Employees
+    -Look at list of Employees
+    -Creating Projects
+    -Updating description of project
+    -Deleting project only if no employee is working on it.
+    -Look at the List of Projects
+    -Allocate Projects to the Employees
+    -View Timesheet filled by the employees
+    -Viewing which Employee is working on which Project
+
+=> Normal user (which are the Employees ) can do following actions
+    -Login with username as his email
+    -Can fill his/her timesheet of a project
+    -Look at the timesheets filled by him/her only
+    -Look at the projects allocated to him/her only
+    
+=> Other than that the common functionality  provided to all by the application is
+    -If any user forgot his/her password it can be recovered by using email
+    -Employee has to change his/her password befor the first time login by an unique link provided through email
+    -Employees can get work instructions by description provided with the project

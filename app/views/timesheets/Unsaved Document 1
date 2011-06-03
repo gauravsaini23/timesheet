@@ -1,0 +1,6 @@
+if  params[:timesheet_of][:employee]
+                @timesheets = Timesheet.find(:all, :conditions => ["date >= ? and date <= ? and project_name ? 
+                                                                   and employee_name ?",date_from, date_to,
+                                                       params[:timesheet_of][:project],params[:timesheet_of][:employee]])
+              end
+                

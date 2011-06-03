@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README_FOR_APP</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README_FOR_APP</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>doc/README_FOR_APP
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Mon Sep 20 10:44:55 +0530 2010</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>&gt;=&gt;models</h1>
+<pre>
+  =&gt;create a users model with
+    -emp_id             #leave it for now
+    -username
+    -password_hash
+    -salt
+    -is_admin
+    -is_active
+    -forgot_password_hash
+    -confirmation_link_hash
+      validations :
+        username should be unique
+        password should be atleast 1 character and 1 digit, minimum length 6
+
+      only admin can create employee
+      =belongs _to :employee
+
+  =&gt;an employee model having
+    -first_name
+    -last_name
+    -email
+    -created_at
+    -updated_at
+    -date_of_joining
+    -date_of_leaving
+    when an employee is created a user is created in users table with username as email address of employee and
+    password as &quot;password1&quot;
+
+    = has_and_belongs_to_many / has_many through relationship between the employee and projects and
+    = has_many relationship between employee and timesheet
+    = has_one relation with user model
+
+      =&gt;validations
+        - email should be unique
+        - firstname should be preset, last name should be present, both should be alphabets, space
+        - validate the format of email
+        - dol can not be in future
+        - dol can not be less than doj
+        - doj should be less than current date
+</pre>
+<h1>&gt;project model to keep track of projects undertaken</h1>
+<pre>
+    -name
+    -created_at
+    -deactivated_at
+    = has_many_and_belongs_to :employee
+    = has_many :timesheet
+</pre>
+<h1>&gt; Now projects are to be assigned to employee</h1>
+<pre>
+  - so there is a &quot;has_and_belongs_to_many&quot; relationship between the employee and projects
+  - now there is table with name employee_project with fields
+  - project_id, employee_id, allocated_at, deallocated_at, created_at, updated_at,
+  validations
+  - name can not be blank, name should be unique
+</pre>
+<h1>&gt; <a href="../../classes/Timesheet.html">Timesheet</a></h1>
+<pre>
+  - to manage the timings we need follwing fields
+  - emp_id
+  - project_id
+  - description
+  - duration
+  - date_at
+  = belongs_to :employee
+  = belongs_to :project
+</pre>
+<h1>&gt;=&gt; controllers</h1>
+<pre>
+  =&gt; user
+    - login
+    - logout
+    - change password
+    - forgot password
+    - delete user
+    - home
+  =&gt;employee
+    - create a employee - create a user in backend
+    - edit employee
+    - delete employee
+    - list of employees
+  =&gt;project
+    - create project
+    - edit project
+    - delete project
+    - allocate employee to project
+    - deallocate employee to project
+    - view list of projects
+    - view employees allocated to a particular project
+    - view projects of a particular employee
+  =&gt; Timesheet
+    - create timesheet
+    - edit timesheet
+    - view timesheet
+</pre>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

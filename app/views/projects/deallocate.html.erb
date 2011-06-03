@@ -1,0 +1,20 @@
+<head>
+<title>Deallocate Project</title>
+</head>
+ 
+
+    <% form_for :deallocate, :url => {:action => "deallocate", :controller => "projects" } do |f| %>
+    
+      
+      <p><label for=”employee_email”>Employee Email:</label>
+      <%= select_tag(:email,options_for_select(@empemails))%></p>
+      
+      
+      <p><label for=”project_name”>Project Name:</label>
+      <%= select_tag(:project_name,options_for_select(@pronames))%></p>
+
+    
+      <%= f.submit "Deallocate" %>
+    <% end %>
+    
+<br/><%= link_to "Home", :action => "home" , :controller => "users"%>

@@ -1,0 +1,95 @@
+=>=>models
+
+  =>create a users model with
+    -emp_id             #leave it for now
+    -username
+    -password_hash
+    -salt
+    -is_admin
+    -is_active
+    -forgot_password_hash
+    -confirmation_link_hash
+      validations : 
+        username should be unique
+        password should be atleast 1 character and 1 digit, minimum length 6
+      
+      only admin can create employee
+      =belongs _to :employee
+  
+  
+  =>an employee model having  
+    -first_name
+    -last_name
+    -email
+    -created_at
+    -updated_at
+    -date_of_joining
+    -date_of_leaving
+    when an employee is created a user is created in users table with username as email address of employee and 
+    password as "password1"
+
+    = has_and_belongs_to_many / has_many through relationship between the employee and projects and
+    = has_many relationship between employee and timesheet
+    = has_one relation with user model
+    
+      =>validations
+        - email should be unique
+        - firstname should be preset, last name should be present, both should be alphabets, space
+        - validate the format of email
+        - dol can not be in future
+        - dol can not be less than doj
+        - doj should be less than current date
+
+
+=>project model to keep track of projects undertaken
+    
+    -name
+    -created_at
+    -deactivated_at
+    = has_many_and_belongs_to :employee
+    = has_many :timesheet
+    
+=> Now projects are to be assigned to employee 
+  - so there is a "has_and_belongs_to_many" relationship between the employee and projects
+  - now there is table with name employee_project with fields
+  - project_id, employee_id, allocated_at, deallocated_at, created_at, updated_at, 
+  validations
+  - name can not be blank, name should be unique
+  
+=> Timesheet 
+  - to manage the timings we need follwing fields
+  - emp_id
+  - project_id
+  - description
+  - duration 
+  - date_at
+  = belongs_to :employee
+  = belongs_to :project
+  
+=>=> controllers
+  => user
+    - login
+    - logout
+    - change password
+    - forgot password
+    - delete user  
+    - home
+  =>employee 
+    - create a employee - create a user in backend
+    - edit employee
+    - delete employee
+    - list of employees
+  =>project 
+    - create project
+    - edit project
+    - delete project
+    - allocate employee to project
+    - deallocate employee to project
+    - view list of projects
+    - view employees allocated to a particular project
+    - view projects of a particular employee
+  => Timesheet
+    - create timesheet 
+    - edit timesheet
+    - view timesheet
+   

@@ -1,0 +1,21 @@
+<%= error_messages_for :emp %>
+<table>
+      <tr>
+         <td> <label for="employee_first_name">First Name:</label></td>
+         <td> <%= f.text_field "first_name"  %></td>
+      <tr>
+         <td> <label for="employee_last_name">Last Name:</label></td>
+         <td> <%= f.text_field("last_name") %></td>
+      <tr>
+         <td> <label for="employee_email">Email:</label></td>
+         <td> <%= f.text_field("email") %></td>
+      <tr>
+        <td><label for="date_of_joining_date">Date of joining:</label></td>
+        <td>  <%= f.date_select "date_of_joining",:start_year => 2010 %></td>
+      
+      
+      
+      
+     
+</table>
+

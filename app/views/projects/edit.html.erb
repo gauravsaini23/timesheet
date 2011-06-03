@@ -1,0 +1,50 @@
+    <head>
+    <title>Edit Project</title>
+    </head>
+     
+    <table >
+        <% form_for :change,@project, :url => {:action => "edit", :controller => "projects" } do |f| %>
+        <tr>
+          <td><label for=”project_name”>Project Name:</label></td>
+          <td>    <%= f.text_field :name, :size => 26 %></td>
+        </tr>
+        <tr>
+          <td align ="right"><p><label for=”project_description”>Description:</label></td>
+          <td><%= f.text_area :description,:cols => "30",:rows => "4" %></td>
+        </tr>
+        
+<% if @project.deactivated_at == nil%>
+        <tr >
+          <td><label for="projects">Select Employees</label></td>      
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= render(:partial => "employee_list" ,:locals => {:project => @project})%>
+          </td>  
+      </tr>  
+      <tr>  
+        <td></td>
+        <td><h6>*'A' means project is allocated <br/>and 'NA' for not allocated to Employee<br/>*Changes are immediate</h6></td>
+      </tr>
+<% end %>
+        <tr>
+          <td></td>
+          <td >
+            <%= f.submit "Save changes" %>
+          </td>
+        </tr>    
+
+        <% end %>
+      
+        <div id = "top_right_box">
+          <%= link_to "Home", :action => "home" , :controller => "users"%><br/><br/>
+          <%= link_to "List of Projects", :action => "list" , :controller => "projects"%><br/><br/>
+        <% if @project.deactivated_at %>
+           Project is deactivated
+          <%= link_to 'Activate',{:id => @project.id,:action => "activate",:controller => "projects" } -%>
+
+        <% else %>  
+          <%= link_to 'Deactivate',{:id => @project.id,:action => "deactivate",:controller => "projects" } -%>
+        <% end %>  
+        </div>

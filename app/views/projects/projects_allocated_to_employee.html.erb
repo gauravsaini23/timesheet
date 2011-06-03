@@ -1,0 +1,20 @@
+<% if @projects.blank? %>
+<%= "You are not assigned any projects"%>
+<% else %>
+<h4>You have to work on these projects according to description.</h4>
+
+<table border = 1 >
+  <th>Project Name</th>
+  <th>Description</th>
+<% @projects.each do |pro|%>
+    <tr>
+      <td><%= pro.name -%> </td>
+      
+      <td><%= pro.description %></td>
+                 
+    </tr>
+
+<% end %>  
+</table>
+<% end %>
+
